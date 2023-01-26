@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    td{
+        width: 40px;height: 40px;text-align: center;
+    }
+</style>
+<body>
+    
+<button id="btnStart">Start</button>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script>
+// $(document)
+// .on('click','#btnStart',function(){
+//     num=1;
+//     for(i=0; i<$('#tblData tr').length; i++){
+//         if(i%2==0){
+//             for(j=0; j<$('#tblData tr:eq('+i+') td').length; j++){
+//             $('#tblData tr:eq('+i+') td:eq('+j+')').text(num++);
+//             }
+//         }else{
+//             for(j=$('#tblData tr:eq(0) td').length-1; j>=0; j--){
+//             $('#tblData tr:eq('+i+') td:eq('+j+')').text(num++);
+//             }
+//         }
+//       }
+    // num=1;
+    // $('#tblData tr').each(function(){
+    //     $(this).find('td').each(function(){
+    //         $(this).text(num++);
+    //     })
+    // })
+// })
+// $(document)
+// .on('click','#btnStart',function(){
+//     $('#tblData tr:odd').css({'background-color':'yellow', 'color':'red'});
+//     num = 1;
+//     for(i=0;i<$('#tblData tr').length;i++){
+//         for(j=0;j<$('#tblData tr:eq('+i+') td').length;j++){
+
+//             lastindex = $('#tblData tr:eq('+i+') td').length - 1;
+
+//             if(i%2==0){
+//                 $('#tblData tr:eq('+i+') td:eq('+j+')').text(num++);
+//             } else{
+//                 $('#tblData tr:eq('+i+') td:eq('+(lastindex-j)+')').text(num++);
+//             }
+//         }
+//     }
+// })
+num=1;
+
+$(document)
+.on('click','td',function(){
+    if($(this).text()==''){
+        $(this).text(num++);
+    }
+})
+// .on('click','#btnStart',function(){
+//     m=prompt('행 갯수를 입력하시오');
+//     m=parseInt(m);
+//     n=prompt('열 갯수를 입력하시오');
+//     n=parseInt(n);
+//     $(this).before('<table id=tblData border="1"></table>');
+//     for(j=0; j<m; j++){
+//         $('table').append('<tr>');
+//         for(i=0; i<n; i++){
+//             $('table').append('<td></td>');
+//          }
+//         $('table').append('</tr>');
+//         }
+// })
+
+.on('click','#btnStart',function(){
+    
+    m=prompt('행 갯수를 입력하시오');
+    m=parseInt(m);
+    n=prompt('열 갯수를 입력하시오');
+    n=parseInt(n);
+    tdstr='';
+    str='';
+        for(j=0; j<m; j++){
+            str+='<tr>'
+                for(i=0; i<n; i++){
+                    str+='<td></td>'
+                }
+            str+='</tr>'
+            }
+    $(this).before('<table id=tblData border="1">'+str+'</table>');
+flag='e';
+    num=1
+    i=0;
+    j=0;
+    w_limit=0;
+    n_limit=0;
+    count=1;
+    e_limit=$('#tblData tr:eq('+i+') td').length-1
+    s_limit=$('#tblData tr').length-1
+
+    i= m-1;
+    j=(m-1)/2;
+    num=1
+    for(; num<=m*n; num++){
+        $('#tblData tr:eq('+i+') td:eq('+j+')').text(num);
+        i++;
+        j--;
+        if(i>m-1){i=0;}
+        if(!$(('#tblData tr:eq('+i+') td:eq('+j+')')).text()==''){
+            i=i-2;
+            j=j+1;
+        }
+        if(j<0){j=m-1;}
+    }
+    // flag='e';
+    // num=1
+    // i=0;
+    // j=0;
+    // w_limit=0;
+    // n_limit=0;
+    // count=1;
+    // e_limit=$('#tblData tr:eq('+i+') td').length-1
+    // s_limit=$('#tblData tr').length-1
+
+    // for(; num<=m*n; num++){
+    //         if(flag=='e'){
+    //             console.log(num);
+    //             console.log(i+" "+j);
+                
+    //             $('#tblData tr:eq('+i+') td:eq('+(j++)+')').text(num);
+                
+    //             if(e_limit==j){
+    //                 e_limit--;
+    //                 flag='s';
+    //             }
+    //         } else if(flag=='s'){
+                
+    //             $('#tblData tr:eq('+(i++)+') td:eq('+j+')').text(num);
+                
+    //             if(s_limit==i){
+    //                 s_limit--;
+    //                 flag='w';
+    //             }
+    //         } else if(flag=='w'){
+    //             $('#tblData tr:eq('+i+') td:eq('+(j--)+')').text(num);
+                
+    //             if(w_limit==j){
+    //                 w_limit++;
+    //                 flag='n';
+    //             }
+    //         } else if(flag=='n'){
+    //             $('#tblData tr:eq('+(i--)+') td:eq('+j+')').text(num);
+    //             if(n_limit==i){
+    //                 n_limit++;
+    //                 flag='e';
+    //             }
+    //         }
+    //     }
+    
+//     interval=setInterval(function a(){{
+//         for(let i=w_limit; i<=e_limit; i++){
+//             $('#tblData tr:eq('+n_limit+') td:eq('+i+')').text(count++);
+//         }
+//         n_limit++
+//         for(let j=n_limit; j<=s_limit; j++){
+//             $('#tblData tr:eq('+j+') td:eq('+e_limit+')').text(count++);
+//         }
+//         e_limit--
+//         for(let i=e_limit; i>=w_limit; i--){
+//             $('#tblData tr:eq('+s_limit+') td:eq('+i+')').text(count++);
+//         }
+//         s_limit--
+//         for(let j=s_limit; j>=n_limit; j--){
+//             console.log(count);
+//             console.log(i+" "+j);
+//             $('#tblData tr:eq('+j+') td:eq('+w_limit+')').text(count++);
+//         }
+//         w_limit++
+//     }
+//     if(num>m*n)clearInterval(interval)
+// },1000);
+})
+
+//m+n -> 이게 가장 빠르다
+// .on('click','#btnStart',function(){
+//     $(this).before('<table id=tblData border="1"></table>');
+//     m=prompt('행 갯수를 입력하시오');
+//     m=parseInt(m);
+//     n=prompt('열 갯수를 입력하시오');
+//     n=parseInt(n);
+//     flag='e';
+
+    
+//     for(i=0; i<n; i++){
+//         str+='<td></td>'
+//         }
+//     str1='';
+//     for(i=0; i<m; i++){
+//         str1+='<td>'+str+'</td>';
+//     }
+//     $('#tblData').append(str1);
+    
+// })
+
+</script>
+</html>
