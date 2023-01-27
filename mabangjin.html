@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mabangjin</title>
+</head>
+<style>
+
+td{
+    width:40px;
+    height: 40px;
+    text-align: center;
+}
+
+</style>
+<body>
+
+
+<button id="create">create</button> &nbsp;
+<button id="fill">fill</button>    
+<hr>
+<div id="field"></div>
+</body>
+<script src ="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script>
+$(document)
+.on('click','#create',function(){
+
+    rows = parseInt(prompt('How many rows?'));
+    columns = parseInt(prompt('How many columns?'));
+    
+    dstr = "";
+    for(i=0;i<columns;i++){
+        dstr = dstr + '<td></td>'
+    }
+
+    rstr = "";
+    for(i=0;i<rows;i++){
+        rstr += '<tr>' + dstr + '</tr>';
+    }
+
+    tstr = '<table id="tb" border="1">' + rstr + '</table>';
+    
+    $('#field').append(tstr);
+})
+
+.on('click','#fill',function(){
+
+    
+    num = 1;
+
+    y = $('#tb tr').length - 1;
+    x = ($('#tb tr:eq(0) td').length - 1) / 2;
+
+    yen = $('#tb tr').length - 1;
+    xst = $('#tb tr:eq(0) td').length - 1;
+
+    for(i=0;i<$('#tb td').length;i++){
+
+    $('#tb tr:eq('+ y +') td:eq('+ x +')').text(num);
+        
+    
+    if(x>0 && y<yen){
+        if( $('#tb tr:eq('+ (y+1) +') td:eq('+ (x-1) +')').text()!=""){
+            y--;
+        } else{
+            x--;
+            y++; 
+        }
+    }
+
+    else if(x>0 && y>=yen){
+        if( $('#tb tr:eq('+ 0 +') td:eq('+ (x-1) +')').text()!=""){
+            y--;
+        } else{
+            x--;
+            y=0; 
+        }
+    }
+
+    else if(x==0 && y<yen){
+        if( $('#tb tr:eq('+ (y+1) +') td:eq('+ xst +')').text()!=""){
+            y--;
+        } else{
+            x=xst;
+            y++; 
+        }
+    }
+
+    else if(x<=0 && y>=yen){
+        if( $('#tb tr:eq('+ 0 +') td:eq('+ xst +')').text()!=""){
+            y--;
+        } else{
+            x=xst;
+            y=0;
+        }
+    }
+    // 원인 else if 로 해야하는데 다 if로 해버림
+    num++;
+    }
+
+
+
+})
+
+
+</script>
+</html>
