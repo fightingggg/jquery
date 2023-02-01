@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>room</title>
+    
+</head>
+<style>
+     input{
+        width:100px;
+    }
+     table { background-color: skyblue; }
+
+    button{
+        background: orange; color: black; 
+        border-color: black;
+    }
+    .roomtype{
+        text-align: center;
+    }
+    
+   
+    
+
+    
+
+</style>
+<body>
+
+<table style=>
+    <tr>
+    <td style ="width: 33%;"><a href = 'type.html'>객실타입관리</a>&nbsp; 객실관리&nbsp;<a href='book.html'>예약관리</a>></td>
+    <td style = "width:34%;text-align:center"><h1>호텔객실예약관리</h1></td>
+    <td align="center" style="width:33%;">예약된 객실목록</td>
+    </tr>
+   
+    <tr>
+        
+        <td ><table>
+           <tr>
+            <td >체크인</td><td><input type = "date" id=" "></td>
+           </tr>
+           <tr>
+            <td>체크아웃</td><td><input type = "date"></td>
+           </tr>
+           <tr>
+            <td colspan="2">객실타입&nbsp;
+                
+                     <select style="width:200px">
+                           <option> 백두산 SuiteRoom 120k</option>
+                           <option> 한라산 FamilyRoom 100k</option>
+                           <option> 광덕산 DeluxeRoom100k</option>
+                          <option> 태조산 SingleRoom 80k</option>
+                    </select>
+            </td>
+           </tr>
+           <tr>
+            <td colspan=2 align="center"><button id=btnSelect>추가</button></td>
+           </tr>
+           <tr>
+            
+            <td colspan=2 align="center"><select style="width:600px; height:200px; " size="10" id="roomb" name="roomb"   ></td>
+                <option> </option>
+            
+            
+           </tr>
+
+        </table></td> 
+      <td> <table>
+        <tr>
+            <td colspan=2>체크인</td><td ><input type = "date" id="checkin" name="checkin"> </td>
+        </tr>
+        <tr>
+            <td colspan=2>체크아웃</td><td><input type = "date" id="checkout" name="checkout"> </td>
+        </tr>
+        <tr>
+            <td colspan=2>객실번호</td><td><input type = "text" id="number" name =number> </td>       
+        </tr>
+        <tr>
+            <td colspan=2>객실명</td><td><input type = "text" id="name" name =name> </td> 
+        </tr>
+        <tr>
+            <td colspan=2>객실타입</td>
+            <td>
+                <select style="width:100px">
+                    <option> 백두산 SuiteRoom 120k</option>
+                    <option> 한라산 FamilyRoom 100k</option>
+                    <option> 광덕산 DeluxeRoom100k</option>
+                    <option> 태조산 SingleRoom 80k</option>
+                </select>
+                 </td>
+            
+           
+        </tr>
+        <tr>
+            <td colspan=2>숙박인원</td><td><input type = "number"> </td>
+        </tr>
+        <tr>
+            <td colspan=2>대표자명</td><td><input type = "text"> </td>
+        </tr>
+        <tr>
+            <td colspan=2>연락처</td><td><input type =  "text"> </td>
+        </tr>
+        <tr>
+            <td colspan=2>총 숙박요금</td><td><input type = "text">원 </td>
+
+        </tr>
+        <tr>
+            <td align="center"><button id=btnSelect>완료</button></td>
+            <td  align="center"><button id=btnReset>취소</button></td>
+            <td  align="center"><button id=btnempty>비우기</button></td>
+        </tr>
+        
+    </table></td>
+    <td><table>
+       <p align="center">예약된 객실 목록</p>
+            <td align="center"><select style="width:200px; height:200px; " size="10" ></td>
+                
+            
+
+
+
+    </table></td>
+
+    
+        
+        
+
+    </tr>
+   </tr>
+   <p></p>
+
+</tr>
+
+
+    
+</table>
+
+</body>
+<script src ="https:code.jquery.com/jquery-latest.js"></script>
+<script>
+    $(document)
+    .on('click','#btnSelect',function(){
+        checkin=$('#checkin').val()
+        checkout=$('#checkout').val()
+        number=$('#number').val()
+        name=$('#name').val()
+        $('#roomb').append('<option>'+'체크인:' +checkin+'체크아웃:' + checkout+'객실번호:'+number +'객실명:'+name+'</option>')
+    
+    })
+        .on('click','#btnReset',function(){
+        $('#roomb option:selected ').remove();
+    })
+    .on('click','#btnempty',function(){
+        $('#checkin').val('')
+        $('#checkout').val('')
+        $('#number').val('')
+        $('#name').val('')
+
+    })
+
+
+
+
+
+
+
+</script>
+</html>
