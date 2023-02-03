@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table { border-collapse: collapse}
+    td{ width:40px; height:40px; border:1px solid blue; text-align: center ;}
+</style>
+<body align="center">
+    <table align="center" id="tb">
+        <tr>
+            <td>10</td><td>-5</td><td>3</td><td>7</td><td>1</td><td>0</td><td>-6</td><td>4</td><td>9</td><td>7</td>
+        </tr>
+        </table><br>
+        <button id="btnStartSort" id="sort" name=sort>정렬시작1</button>
+        <button id="btnStart" id="sort" name=sort>정렬시작2</button>
+
+
+   </table>
+    
+</body>
+<script src ="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+
+
+
+    $(document)
+    .on('click','#btnStartSort',function(){
+        
+        
+               
+                for(i=0; i<$('#tb tr td').length;i++){
+                    for(j=i+1;j<$('#tb tr td').length;j++){
+                        s=parseInt($('#tb tr td').eq(i).text())
+                        t=parseInt($('#tb tr td').eq(j).text())
+                        if(s>t){
+                            $('#tb tr td').eq(i).text(t)
+                            $('#tb tr td').eq(j).text(s)
+
+      
+            }
+                            
+
+
+                        }
+                    }
+                
+                })
+      
+                                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                //     for(j=0; j<=1; j++){
+                //         if(x[i]<x[j]){
+                //             temp=x[i];
+                //             x[i]=x[j];
+                //             x[j]=temp;
+                //         }
+                //     }
+                // }
+
+
+
+        
+        // for(i = 0; i<x.length; i++) {
+        //     (x[i]+" ");
+        //     $('#sort').val(sortt)
+            
+    
+
+
+
+    // i=0;
+    // j=0;
+    // temp=0;
+    // for(i=0; i<x.length;i++){
+    //     for(j=0; j<=1; j++){
+    //         if(x[i]<x[j]){
+    //             temp=x[i];
+    //             x[i]=x[j];
+    //             x[j]=temp;
+    //         }
+    //     }
+    // }
+    //     for(i = 0; i<x.length; i++) {
+    //         (x[i]+" ");
+    // }
+
+
+
+
+
+
+
+
+    // 오름차순 정렬 -6 | -5 | 0 | 1 | 3 | 7 |10
+    //setInterval 여러번 쓰면 for문 하고 같은 효과가 난다.
+    // 저거 딱 누르면 저기 숫자가 정렬되게 나온다
+</script>
+</html>
